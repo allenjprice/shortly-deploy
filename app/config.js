@@ -1,7 +1,9 @@
 var Mongoose = require('mongoose');
 var path = require('path');
 
-Mongoose.connect('mongodb://localhost:27017/shortlydb');
+
+var mongooseUri = process.env.dbURI || 'mongodb://localhost:27017/shortlydb';
+Mongoose.connect(mongooseUri);
 
 var db = Mongoose.connection;
 
@@ -22,21 +24,9 @@ db.UrlSchema = new Schema({
 });
 
 db.UserSchema = new Schema({
-  username: String,
-  password: String,
+  username: {type: String, required: true, unique: true},
+  password: {type: String, required: true},
   timestamps: {type: Date, default: Date.now}
 });
 
 module.exports = db;
-
-// var db = Bookshelf.initialize({
-//   client: 'sqlite3',
-//   connection: {
-//     host: process.env.siteName || '127.0.0.1',
-//     user: 'your_database_user',
-//     password: 'password',
-//     database: 'shortlydb',
-//     charset: 'utf8',
-//     filename: path.join(__dirname, '../db/shortly.sqlite')
-//   }
-// });
