@@ -3,6 +3,21 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+      options: {
+        separator: ';',
+      },
+      dist: {
+        src: [
+          'public/client/app.js',
+          'public/client/link.js',
+          'public/client/links.js',
+          'public/client/linkView.js',
+          'public/client/linksView.js',
+          'public/client/createLinkView.js',
+          'public/client/router.js'
+        ],
+        dest: 'public/dist/app-concat.js'
+      }
     },
 
     mochaTest: {
@@ -21,6 +36,15 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      // UGLIFY ME
+      options: {
+        mangle: false
+      },
+      my_target: {
+        files: {
+          'public/dist/app-min.js': ['public/dist/app-concat.js'],
+        }
+      }
     },
 
     jshint: {
@@ -106,6 +130,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
+    'concat',
+    'uglify'
   ]);
 
 
