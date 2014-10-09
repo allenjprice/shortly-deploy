@@ -1,28 +1,17 @@
-Wed Oct 08 2014 12:20:38 GMT-0700 (PDT):
-{ [TypeError: Object #<Subscription> has no method 'getPortalUrl']
+Thu Oct 09 2014 09:53:57 GMT-0700 (PDT):
+{ [Error: ENOENT, no such file or directory 'Users/student/Desktop/shortly-deploy']
   stack: [Getter/Setter],
-  __frame: 
-   { name: 'portalGitInitInstruction__15',
-     line: 670,
-     file: '/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js',
-     prev: 
-      { name: 'fallbackToPortal',
-        line: 692,
-        file: '/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js',
-        prev: [Object],
-        active: false,
-        offset: 2,
-        col: 6 },
-     active: true,
-     offset: 12,
-     col: 8 },
+  errno: 34,
+  code: 'ENOENT',
+  path: 'Users/student/Desktop/shortly-deploy',
+  syscall: 'open',
+  __frame: undefined,
   rawStack: [Getter] }
-TypeError: Object #<Subscription> has no method 'getPortalUrl'
-    at portalGitInitInstruction__15 (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:684:54)
-    at portalGitInitInstruction__15 (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:682:8)
-    at fallbackToPortal (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:694:6)
-    at getPublishingUser__16 (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/websites/websitesclient._js:728:8)
-    at LinkedRevisionControlClient_prototype__addRemotesToLocalGitRepo__5 (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/util/git/linkedrevisioncontrol._js:177:29)
-    at GitClient_prototype_deploy__7 (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/util/git/linkedrevisioncontrol._js:214:2)
-    at __4 (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/asm/site._js:272:12)
+Error: ENOENT, no such file or directory 'Users/student/Desktop/shortly-deploy'
+    at Object.fs.openSync (fs.js:427:18)
+    at Object.fs.readFileSync (fs.js:284:15)
+    at readFileContents (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/util/profile/publishSettings.js:28:23)
+    at Object.importPublishSettings [as import] (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/util/profile/publishSettings.js:91:13)
+    at Profile._.extend.importPublishSettings (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/util/profile/profile.js:193:34)
+    at __5 (/Users/student/.nvm/v0.10.26/lib/node_modules/azure-cli/lib/commands/account._js:115:23)
 
