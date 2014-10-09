@@ -49,10 +49,21 @@ module.exports = function(grunt) {
 
     jshint: {
       files: [
-        // Add filespec list here
+        'public/client/app.js',
+        'public/client/link.js',
+        'public/client/links.js',
+        'public/client/linkView.js',
+        'public/client/linksView.js',
+        'public/client/createLinkView.js',
+        'public/client/router.js',
+        'app/**/*.js',
+        'app/config.js',
+        'lib/*.js',
+        'server-config.js',
+        'server.js'
       ],
       options: {
-        force: 'true',
+        // force: 'true',
         jshintrc: '.jshintrc',
         ignores: [
           'public/lib/**/*.js',
@@ -82,7 +93,13 @@ module.exports = function(grunt) {
     },
 
     shell: {
+      options: {
+        stdout: true
+      },
       prodServer: {
+        command: function(){
+          return 'git push azure master';
+        }
       }
     },
   });
@@ -118,11 +135,17 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
+    'jshint',
+    'mochaTest',
+    'concat',
+    'uglify',
+    'shell'
   ]);
 
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
       // add your production server task here
+      grunt.task.run(['build']);
     } else {
       grunt.task.run([ 'server-dev' ]);
     }
@@ -130,9 +153,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
+    'jshint',
+    'mochaTest',
     'concat',
     'uglify'
   ]);
-
-
 };
